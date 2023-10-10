@@ -15,9 +15,10 @@ import {
 } from "@thirdweb-dev/react";
 import "../styles/globals.css";
 import { Toaster } from "../components/ui/toaster";
+import { Ethereum, Mumbai } from "@thirdweb-dev/chains";
 
 const smartWalletOptions = {
-  factoryAddress: "0xf766DB9d6b0587B74637003767071C24063c5457",
+  factoryAddress: "0xcb8949693d9Ce804586f353e1F4514a4Ad21d654",
   gasless: true,
 };
 
@@ -26,6 +27,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     <ThirdwebProvider
       activeChain="mumbai"
       clientId={process.env.NEXT_PUBLIC_THIRDWEB_API_KEY}
+      supportedChains={[Ethereum, Mumbai]}
       supportedWallets={[
         smartWallet(metamaskWallet(), smartWalletOptions),
         smartWallet(coinbaseWallet(), smartWalletOptions),
@@ -45,8 +47,7 @@ function MyApp({ Component, pageProps }: AppProps) {
           emailLogin: false,
           smsLogin: false,
         }),
-      ]}
-    >
+      ]}>
       <Component {...pageProps} />
       <Toaster />
     </ThirdwebProvider>

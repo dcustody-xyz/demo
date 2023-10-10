@@ -21,6 +21,7 @@ export default function ConnectWalletScreen() {
         </p>
 
         <ConnectWallet
+          switchToActiveChain={true}
           style={{
             marginTop: 12,
             width: "90%",
@@ -84,6 +85,7 @@ export default function ConnectWalletScreen() {
 
         <ConnectWallet
           btnTitle="Create a web3 Wallet"
+          switchToActiveChain={true}
           style={{
             marginTop: 12,
             width: "90%",

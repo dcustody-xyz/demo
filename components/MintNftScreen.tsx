@@ -4,7 +4,9 @@ import Image from "next/image";
 import { useToast } from "./ui/use-toast";
 import Link from "next/link";
 
-const nftContractAddress = "0x3f5056815763d8fEC4DE5499C8176016EEf6A7c9";
+// const nftContractAddress = "0xCA59f35cd1731461EAe2612Ad953E6068C64E36C";
+// const nftContractAddress = "0x3f5056815763d8fEC4DE5499C8176016EEf6A7c9";
+const nftContractAddress = "0x4C42C6eFc132BdeE4b82448150c92A69F49d2C0c";
 
 export default function MintNftScreen() {
   const { toast } = useToast();
