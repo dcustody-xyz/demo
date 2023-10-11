@@ -40,21 +40,26 @@ export default function MintNftScreen() {
 
           <Web3Button
             contractAddress={nftContractAddress}
-            action={(contract) => contract.erc1155.claim(0, 1)}
-            onSuccess={() =>
+            action={(contract) => contract.erc1155.claim(1, 1)}
+            onSuccess={() => {
+              const url = `https://testnets.opensea.io/assets/mumbai/${nftContractAddress}/1`;
+
               toast({
                 title: "Successfully claimed NFT!",
                 description: (
-                  <Link
-                    href={`https://testnets.opensea.io/assets/mumbai/${nftContractAddress}/0`}
-                    className="font-bold underline"
-                    target="_blank"
-                  >
-                    View on OpenSea
-                  </Link>
+                  <p>
+                    Redirecting...
+                    <Link href={url} className="font-bold underline" target="_blank">
+                      view now on OpenSea
+                    </Link>
+                  </p>
                 ),
               })
-            }
+
+              setTimeout(() => {
+                window.open(url, "_blank");
+              }, 3000);
+            }}
             onError={() => {
               toast({
                 title: "Error",
