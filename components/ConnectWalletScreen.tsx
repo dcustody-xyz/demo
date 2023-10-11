@@ -1,7 +1,8 @@
 import React from "react";
 import {
   ConnectWallet,
-  embeddedWallet,
+  // embeddedWallet,
+  magicLink,
   smartWallet,
   useConnect,
   useConnectionStatus,
@@ -10,10 +11,23 @@ import { Mumbai } from "@thirdweb-dev/chains";
 import { Button } from "./ui/button";
 import Image from "next/image";
 
-const smartWalletConfig = smartWallet(embeddedWallet(), {
+// const embeddedWalletConfig = embeddedWallet();
+const magicLinkConfig = magicLink({
+  apiKey: process.env.NEXT_PUBLIC_MAGIC_LINK_API_KEY as string,
+  oauthOptions: {
+    providers: ["google"],
+  },
+  type: "auth",
+  emailLogin: false,
+  smsLogin: false,
+});
+const smartWalletConfig = smartWallet(magicLinkConfig, {
   factoryAddress: "0xcb8949693d9Ce804586f353e1F4514a4Ad21d654",
   gasless: true,
 });
+
+// embeddedWalletConfig.meta.name = "dCustody";
+// embeddedWalletConfig.meta.iconURL = "/logo.png";
 
 export default function ConnectWalletScreen() {
   const connectWallet = useConnect();
@@ -31,11 +45,14 @@ export default function ConnectWalletScreen() {
                   style={{ marginTop: 12, height: 46, width: "90%" }}
                   disabled={isLoading}
                   onClick={async () => {
-                    const wallet      = await connectWallet(embeddedWallet())
+                    const wallet      = await connectWallet(magicLinkConfig, {
+                      chainId: Mumbai.chainId,
+                      oauthProvider: "google",
+                    });
                     const smartWallet = await connectWallet(smartWalletConfig, {
                       chainId: Mumbai.chainId,
                       personalWallet: wallet,
-                    })
+                    });
                   }}>
             {isLoading ? (
               <div

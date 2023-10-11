@@ -8,8 +8,6 @@ const nftContractAddress = "0x4C42C6eFc132BdeE4b82448150c92A69F49d2C0c";
 
 export default function MintNftScreen() {
   const { toast } = useToast();
-  // const wallet = useWallet();
-  // const smartWalletConfig = wallet.config;
 
   return (
     <div className="w-full flex flex-col items-center">
