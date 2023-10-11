@@ -1,15 +1,15 @@
 import React from "react";
-import { ConnectWallet, Web3Button } from "@thirdweb-dev/react";
+import { ConnectWallet, Web3Button, useWallet } from "@thirdweb-dev/react";
 import Image from "next/image";
 import { useToast } from "./ui/use-toast";
 import Link from "next/link";
 
-// const nftContractAddress = "0xCA59f35cd1731461EAe2612Ad953E6068C64E36C";
-// const nftContractAddress = "0x3f5056815763d8fEC4DE5499C8176016EEf6A7c9";
 const nftContractAddress = "0x4C42C6eFc132BdeE4b82448150c92A69F49d2C0c";
 
 export default function MintNftScreen() {
   const { toast } = useToast();
+  // const wallet = useWallet();
+  // const smartWalletConfig = wallet.config;
 
   return (
     <div className="w-full flex flex-col items-center">
@@ -18,7 +18,7 @@ export default function MintNftScreen() {
       </h2>
       <div className="w-full flex flex-col items-center md:flex-row md:items-start gap-8">
         <Image
-          src="/eth.png"
+          src="/nft.png"
           alt="Ethereum AI art"
           width={300}
           height={300}

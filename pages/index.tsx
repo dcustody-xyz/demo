@@ -10,7 +10,7 @@ const Home: NextPage = () => {
     <main className="min-h-screen min-w-screen flex items-center justify-center flex-col pb-12">
       <div className="px-2">
         <h1 className="mt-20 text-4xl font-extrabold tracking-tight lg:text-5xl text-center">
-          Web3 Onboarding demo
+          All Roads Leads to Experiencia Endeavor Cuyo
         </h1>
         <p className="text-xl text-muted-foreground mt-6 text-center mb-8">
           A demo flow for onboarding both new and existing users onto a web3
