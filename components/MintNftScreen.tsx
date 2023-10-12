@@ -4,7 +4,8 @@ import Image from "next/image";
 import { useToast } from "./ui/use-toast";
 import Link from "next/link";
 
-const nftContractAddress = "0x4C42C6eFc132BdeE4b82448150c92A69F49d2C0c";
+// const nftContractAddress = "0x4C42C6eFc132BdeE4b82448150c92A69F49d2C0c"; // Mumbai
+const nftContractAddress = "0x131702d85f92199DAB0c90477525311415f4AF8b"; // Polygon
 
 export default function MintNftScreen() {
   const { toast } = useToast();
@@ -29,8 +30,8 @@ export default function MintNftScreen() {
           </h3>
 
           <p className="text-sm text-muted-foreground mb-4 md:mb-12">
-            This is a non-fungible token (NFT) on the Polygon Mumbai test
-            network. You can trade, sell or buy this & other NFTs from the
+            This is a non-fungible token (NFT) on the Polygon network.
+            You can trade, sell or buy this & other NFTs from the
             wallet you are connected to below.
           </p>
 
@@ -38,9 +39,9 @@ export default function MintNftScreen() {
 
           <Web3Button
             contractAddress={nftContractAddress}
-            action={(contract) => contract.erc1155.claim(1, 1)}
+            action={(contract) => contract.erc1155.claim(0, 1)}
             onSuccess={() => {
-              const url = `https://testnets.opensea.io/assets/mumbai/${nftContractAddress}/1`;
+              const url = `https://opensea.io/assets/matic/${nftContractAddress}/0`;
 
               toast({
                 title: "Successfully claimed NFT!",

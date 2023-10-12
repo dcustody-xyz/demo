@@ -6,20 +6,14 @@ import {
   useConnect,
   useConnectionStatus,
 } from "@thirdweb-dev/react";
-import { Mumbai } from "@thirdweb-dev/chains";
+import { Polygon } from "@thirdweb-dev/chains";
 import { Button } from "./ui/button";
 import Image from "next/image";
 
 const embeddedWalletConfig = embeddedWallet();
-const smartWalletConfig = smartWallet(embeddedWalletConfig, {
-  factoryAddress: "0xcb8949693d9Ce804586f353e1F4514a4Ad21d654",
-  gasless: true,
-});
-
-embeddedWalletConfig.meta.name    = "dCustody";
-embeddedWalletConfig.meta.iconURL = "/logo.png";
-embeddedWalletConfig.connectUI    = () => <p>Connect UI</p>;
-embeddedWalletConfig.selectUI     = () => <p>Select UI</p>;
+// const factoryAddress = "0xcb8949693d9Ce804586f353e1F4514a4Ad21d654"; // Mumbai
+const factoryAddress = "0x4fd9238875183B42cE1a50250dD9ef6537613888"; // Polygon
+const smartWalletConfig = smartWallet(embeddedWalletConfig, { factoryAddress, gasless: true });
 
 export default function ConnectWalletScreen() {
   const connectWallet = useConnect();
@@ -39,7 +33,7 @@ export default function ConnectWalletScreen() {
                   onClick={async () => {
                     const wallet      = await connectWallet(embeddedWalletConfig);
                     const smartWallet = await connectWallet(smartWalletConfig, {
-                      chainId: Mumbai.chainId,
+                      chainId: Polygon.chainId,
                       personalWallet: wallet,
                     });
                   }}>
