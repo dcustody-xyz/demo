@@ -40,7 +40,6 @@ export default function MintNftScreen() {
           <Web3Button
             contractAddress={nftContractAddress}
             action={(contract) => contract.erc1155.claim(0, 1)}
-            isDisabled={true}
             onSuccess={() => {
               const url = `https://opensea.io/assets/matic/${nftContractAddress}/0`;
 
@@ -68,7 +67,7 @@ export default function MintNftScreen() {
               });
             }}
           >
-            The event has ended, thank you all for participating!
+            Claim NFT
           </Web3Button>
         </div>
       </div>
