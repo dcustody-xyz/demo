@@ -10,7 +10,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       activeChain="polygon"
       clientId={process.env.NEXT_PUBLIC_THIRDWEB_API_KEY}
       supportedChains={[
-        {...Polygon, rpc: ['https://polygon-rpc.com/']}
+        {...Polygon, rpc: ['https://polygon.rpc.thirdweb.com']}
       ]}
       supportedWallets={[
         embeddedWallet()
