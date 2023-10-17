@@ -59,7 +59,9 @@ export default function MintNftScreen() {
                 window.open(url, "_blank");
               }, 3000);
             }}
-            onError={() => {
+            onError={error => {
+              console.error("Error claiming NFT", error);
+
               toast({
                 title: "Error",
                 description: "Something went wrong. Please try again later!",
